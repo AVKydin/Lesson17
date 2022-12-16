@@ -1,4 +1,4 @@
-$(document).ready(function () {
+// $(document).ready(function () {
   // $("#child").draggable({
   //   //   containment: "#parent",
   //   // containment: [50, 50, 200, 200],
@@ -57,9 +57,7 @@ $(document).ready(function () {
   //     // delay: 1000,
   //     distance: 50,
   // });
-
  
-
 //   $(".number-box").sortable({
 //     connectWith: "#start, #end",
 //     // axis: 'x',
@@ -89,14 +87,56 @@ $(document).ready(function () {
     // })
 
 
-  $(window).scroll(function () {
-    paralax();
-  })
+  // $(window).scroll(function () {
+  //   paralax();
+  // })
   
-  function paralax() {
-    let scrollTop = $(window).scrollTop();
-    // console.log(scrollTop);
-    $(".first-message").css("top", `${scrollTop * 0.5}px`);
-    $(".second-message").css("top", `${-50 + scrollTop * 0.45}px`);
+  // function paralax() {
+  //   let scrollTop = $(window).scrollTop();
+  //   // console.log(scrollTop);
+  //   $(".first-message").css("top", `${scrollTop * 0.5}px`);
+  //   $(".second-message").css("top", `${-50 + scrollTop * 0.45}px`);
+  // }
+ 
+// })
+
+$(document).ready(function () {
+
+
+  let arrPuzzle = [`./images/pazzle_1.jpg`];
+console.log(arrPuzzle);
+  function shuffle(arrPuzzle) {
+    arrPuzzle.sort(() => Math.random() - 0.5);
   }
+//   $(".puzzle").sortable({
+//     connectWith: "#pieces, #collected",
+//     // axis: "x",
+//     // cancel: ".disabled",
+//     // containment: ".sort-container",
+//     // delay: 1000,
+//     // distance: 50,
+//   });
+
+  $(".puzzle-image").draggable();
+  $(".puzzle-image").droppable({
+    accept: ".collected",
+    activate: function () {
+      $(".puzzle-image").text("Drop area here...");
+    },
+    deactivate: function () {
+      $(".deactivate").text("Stop");
+      $(".drop-message").text("");
+    },
+    over: function () {
+      $(".drop-message").text("dfsdfsdsdfgsfd");
+    },
+    out: function () {
+      $(".drop-message").text("Drop area here...");
+    },
+    drop: function () {
+      alert("element drop");
+      $(".drop-message").text("");
+      // location.reload();
+    },
+  });
 })
